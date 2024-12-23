@@ -1,0 +1,19 @@
+function updateDocument() {
+  // Получаем данные из таблицы
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Лист1'); // Укажи название листа
+  var key1 = sheet.getRange('A1').getValue(); // Пример: Ячейка с ключом 1
+  var key2 = sheet.getRange('B1').getValue(); // Пример: Ячейка с ключом 2
+  var key3 = sheet.getRange('C1').getValue(); // Пример: Ячейка с ключом 3
+
+  // Открываем текстовый документ
+  var doc = DocumentApp.openById('ID_ТВОЕГО_ДОКУМЕНТА'); // Вставь ID документа
+  var body = doc.getBody();
+
+  // Заменяем метки значениями из таблицы
+  body.replaceText('{{Ключ1}}', key1);
+  body.replaceText('{{Ключ2}}', key2);
+  body.replaceText('{{Ключ3}}', key3);
+
+  // Сохраняем изменения
+  Logger.log('Документ обновлен');
+}
